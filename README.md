@@ -28,6 +28,7 @@ kube-system   kube-apiserver-k8s-0            1/1     Running   1          3m
 kube-system   kube-controller-manager-k8s-0   1/1     Running   1          3m
 kube-system   kube-proxy-9dpcb                1/1     Running   0          3m1s
 kube-system   kube-scheduler-k8s-0            1/1     Running   1          3m1s
+```
 
 ## how to 
 
