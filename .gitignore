@@ -1,0 +1,5 @@
+auth.tf
+terraform.tfstate*
+.terraform
+.terraform.lock.hcl
+.terraform.tfstate*
