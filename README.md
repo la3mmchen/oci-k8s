@@ -11,6 +11,17 @@ It supports different flavors:
 To simplify the setup and to mitigate security concerns there is no external traffic allowed to the installed stuff. either work remote on the vm or use a ssh tunnel.
 
 
+Checked combinations:
+
+| k8s/k3s        | OS Version     |
+| -------------- | -------------- |
+| 1.22x          | Ubuntu 20.04   |
+
+This terraform setup builds an always free instance and bootstraps there a single node kubernetes cluster (latest version).
+
+At the time of writing this builds a single instance with 4 cores and 24 memory ram.
+
+
 ```bash
 $ scp -rv ubuntu@<public ip>:~/.kube/config.localhost ~/.kube/config
 $ ssh -NL 6443:127.0.0.1:6443 -l ubuntu <public ip>
@@ -22,7 +33,7 @@ To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
 
 $ kubectl get nodes
 NAME    STATUS     ROLES                  AGE   VERSION
-k8s-0   NotReady   control-plane,master   3m    v1.22.0
+k8s-0   NotReady   control-plane,master   22s   v1.22.2
 
 $ kubectl get pods --all-namespaces
 NAMESPACE     NAME                            READY   STATUS    RESTARTS   AGE
@@ -36,6 +47,10 @@ kube-system   kube-scheduler-k8s-0            1/1     Running   1          3m1s
 ```
 
 ## how to 
+
+### ssh key 
+
+this setup assumes your public ssh key is at `~/.ssh/id_rsa.pub`
 
 ### setup terraform with OCI
 - Sign up at https://www.oracle.com/de/cloud/free/
@@ -65,3 +80,30 @@ kube-system   kube-scheduler-k8s-0            1/1     Running   1          3m1s
 - `terraform init`
 - `terraform plan`
 - `terraform apply`
+<<<<<<< HEAD
+=======
+
+### update
+
+just build a new cluster wtih 
+
+```bash
+$ terraform taint oci_core_instance.instance
+Resource instance oci_core_instance.instance has been marked as tainted.
+$ terraform apply
+(...)
+
+Note: Objects have changed outside of Terraform
+
+Terraform detected the following changes made outside of Terraform since the last "terraform apply":
+
+  # oci_core_instance.instance has been changed
+  ~ resource "oci_core_instance" "instance" {
+      + extended_metadata   = {}
+        id                  = "ocid1.instance.oc1.uk-london-1.(...)"
+        # (19 unchanged attributes hidden)
+        # (7 unchanged blocks hidden)
+    }
+  (...)
+```
+>>>>>>> main

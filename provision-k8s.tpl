@@ -17,7 +17,7 @@ packages:
   - containerd
 package_update: true
 manage_etc_hosts: true
-output: 
+output:
   all: '| tee -a /var/log/cloud-init.log'
 runcmd:
 - mkdir -p /etc/kubeadm
