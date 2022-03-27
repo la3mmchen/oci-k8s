@@ -13,9 +13,10 @@ To simplify the setup and to mitigate security concerns there is no external tra
 
 Checked combinations:
 
-| k8s/k3s        | OS Version     |
+| version        | OS Version     |
 | -------------- | -------------- |
-| 1.22x          | Ubuntu 20.04   |
+| k3s 1.22x      | Ubuntu 20.04   |
+| k8s 1.23x      | Ubuntu 20.04   |
 
 This terraform setup builds an always free instance and bootstraps there a single node kubernetes cluster (latest version).
 
