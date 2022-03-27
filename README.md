@@ -1,9 +1,14 @@
 # oci-k8s
-Simple K8S Infrastructure based on Oracle Cloud Free Tier offering.
+Get test Infrastructure based on Oracle Cloud Free Tier offering.
 
-This terraform setup builds an always free instance and bootstraps there a single node kubernetes cluster (latest version).
+This terraform setup builds an always free instance and bootstraps a test setup.
 
-To simplify the setup and to mitigate security concerns there is no external traffic allowed to kubernetes. either work remote on the vm or use a ssh tunnel.
+It supports different flavors:
+
+- kubernetes
+- k3s
+
+To simplify the setup and to mitigate security concerns there is no external traffic allowed to the installed stuff. either work remote on the vm or use a ssh tunnel.
 
 
 ```bash
@@ -60,13 +65,3 @@ kube-system   kube-scheduler-k8s-0            1/1     Running   1          3m1s
 - `terraform init`
 - `terraform plan`
 - `terraform apply`
-
-
-### connect
-
-
-
-```bash
-
-```
-
