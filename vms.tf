@@ -25,15 +25,9 @@ resource "oci_core_instance" "instance" {
 
   metadata = {
     ssh_authorized_keys = file("~/.ssh/id_rsa.pub")
-    user_data           = "${base64encode(data.template_file.kube.rendered)}"
+    user_data           = "${base64encode(templatefile(format("provision-%s.tpl",var.flavor), { hostname = "k8s-0", domain = "k8s.local" }))}"
   }
 }
 
-data "template_file" "kube" {
-  template = file("${path.module}/provision.tpl")
 
-  vars = {
-    hostname = "k8s-0"
-    domain   = "k8s.local"
-  }
-}
+

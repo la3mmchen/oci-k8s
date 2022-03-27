@@ -1,9 +1,19 @@
 # oci-k8s
-Simple K8S Infrastructure based on Oracle Cloud Free Tier offering.
+Get test Infrastructure based on Oracle Cloud Free Tier offering.
 
-Check combinations:
+This terraform setup builds an always free instance and bootstraps a test setup.
 
-| Kube Version   | OS Version     |
+It supports different flavors:
+
+- kubernetes
+- k3s
+
+To simplify the setup and to mitigate security concerns there is no external traffic allowed to the installed stuff. either work remote on the vm or use a ssh tunnel.
+
+
+Checked combinations:
+
+| k8s/k3s        | OS Version     |
 | -------------- | -------------- |
 | 1.22x          | Ubuntu 20.04   |
 
@@ -11,7 +21,6 @@ This terraform setup builds an always free instance and bootstraps there a singl
 
 At the time of writing this builds a single instance with 4 cores and 24 memory ram.
 
-To simplify the setup and to mitigate security concerns there is no external traffic allowed to kubernetes. either work remote on the vm or use a ssh tunnel.
 
 ```bash
 $ scp -rv ubuntu@<public ip>:~/.kube/config.localhost ~/.kube/config
@@ -71,6 +80,8 @@ this setup assumes your public ssh key is at `~/.ssh/id_rsa.pub`
 - `terraform init`
 - `terraform plan`
 - `terraform apply`
+<<<<<<< HEAD
+=======
 
 ### update
 
@@ -95,3 +106,4 @@ Terraform detected the following changes made outside of Terraform since the las
     }
   (...)
 ```
+>>>>>>> main
