@@ -9,6 +9,10 @@ resource "oci_core_vcn" "k8s" {
   compartment_id = oci_identity_compartment.k8s.id
   display_name   = "k8s"
   dns_label      = "kube"
+
+  lifecycle {
+    create_before_destroy = false
+  }
 }
 
 resource "oci_core_subnet" "k8s-net" {

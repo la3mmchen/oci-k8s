@@ -27,7 +27,9 @@ resource "oci_core_instance" "instance" {
     ssh_authorized_keys = file("~/.ssh/id_rsa.pub")
     user_data           = "${base64encode(templatefile(format("provision-%s.tpl",var.flavor), { hostname = "k8s-0", domain = "k8s.local" }))}"
   }
+
+  lifecycle {
+    create_before_destroy = false
+  }
 }
-
-
 
